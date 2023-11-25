@@ -2,6 +2,14 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 
+################################
+# superuser information
+# username : admin
+# email : amirrj037@gmail.com
+# password : admin
+################################
+
+
 # Create your models here.
 
 
