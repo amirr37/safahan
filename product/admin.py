@@ -9,9 +9,10 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('name', 'category', 'price', 'stock')
-    list_filter = ('category',)  # Add a filter for category
-    search_fields = ('name', 'category__name')  # Add a search field for name and category name
+    list_display = ('name', 'category', 'price', 'stock', 'weight')
+    list_filter = ('category',)
+    search_fields = ('name', 'category__name')
+    list_editable = ('price', 'stock', 'weight', 'category')
 
 
 class OrderItemInline(admin.TabularInline):
