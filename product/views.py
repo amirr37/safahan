@@ -1,11 +1,10 @@
 from django.shortcuts import render
+from rest_framework import generics
+from product.models import Category, Product, Order
+from product.serializers import CategorySerializer, ProductSerializer, OrderSerializer
+
 
 # Create your views here.
-
-
-from rest_framework import generics
-from product.models import Category, Product
-from product.serializers import CategorySerializer, ProductSerializer
 
 
 class CategoryListAPIView(generics.ListAPIView):
@@ -18,4 +17,6 @@ class ProductListAPIView(generics.ListAPIView):
     serializer_class = ProductSerializer
 
 
-
+class OrderCreateAPIView(generics.CreateAPIView):
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
