@@ -39,11 +39,11 @@ class Order(models.Model):
     shipping_address = models.TextField(blank=True, null=True)
     payment_method = models.CharField(max_length=50, blank=True, null=True)
 
-    def calculate_total_amount(self):
-        return sum(item.subtotal for item in self.order_items.all())
+    # def calculate_total_amount(self):
+    #     return sum(item.subtotal for item in self.order_items.all())
 
     def save(self, *args, **kwargs):
-        self.total_amount = self.calculate_total_amount()
+        # self.total_amount = self.calculate_total_amount() or 0
         super().save(*args, **kwargs)
 
     def __str__(self):
@@ -54,11 +54,12 @@ class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='order_items')
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
-    subtotal = models.DecimalField(max_digits=10, decimal_places=0, validators=[MinValueValidator(0)])
+    subtotal = models.DecimalField(max_digits=10, decimal_places=0, validators=[MinValueValidator(0)], blank=True)
 
-    def save(self, *args, **kwargs):
-        self.subtotal = self.product.price * self.quantity
-        super().save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    # super().save(*args, **kwargs)
+    # self.subtotal = self.product.price * self.quantity
+    # super().save(*args, **kwargs)
 
     def __str__(self):
         return f"{self.quantity} x {self.product.name} in Order #{self.order.pk}"

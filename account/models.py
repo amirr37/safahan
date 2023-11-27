@@ -17,4 +17,4 @@ class CustomUser(AbstractUser):
     phone_number = models.CharField(max_length=11, blank=True, null=True)
 
     def __str__(self):
-        return self.get_full_name()
+        return self.username
