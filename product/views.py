@@ -16,3 +16,6 @@ class CategoryListAPIView(generics.ListAPIView):
 class ProductListAPIView(generics.ListAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+
+
+

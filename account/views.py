@@ -17,3 +17,5 @@ class CustomUserCreateAPIView(generics.CreateAPIView):
         response = super().create(request, *args, **kwargs)
         # Add any additional logic here if needed
         return response
+
+
