@@ -28,8 +28,6 @@ class UserOrderCreateAPIView(generics.CreateAPIView):
         serializer.save(user=self.request.user)
 
 
-
-
 class UserOrderListAPIView(generics.ListAPIView):
     serializer_class = OrderSerializer
     permission_classes = [IsAuthenticated]
