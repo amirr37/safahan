@@ -35,3 +35,11 @@ class UserOrderListAPIView(generics.ListAPIView):
     def get_queryset(self):
         # Filter orders based on the current user
         return Order.objects.filter(user=self.request.user)
+
+
+class CategoryProductListAPIView(generics.ListAPIView):
+    serializer_class = ProductSerializer
+
+    def get_queryset(self):
+        category_id = self.kwargs['category_id']  # Assuming you pass category_id as a URL parameter
+        return Product.objects.filter(category_id=category_id)
