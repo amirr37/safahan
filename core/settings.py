@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     # internal apps
     'account',
     'product',
-
+    'payment',
     # external apps
     'rest_framework',
     'rest_framework.authtoken',
